@@ -8,7 +8,7 @@ public class Conexion {
 		try {
 			//Class.forName("org.postgresql.Driver");//localhost
 			//connection = DriverManager.getConnection("jdbc:postgresql://engicoders:5432/dbusuario","postgres", "postgres");
-                        
+                        // Por favor conectate a la otra base de datos *****ojo
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbusuario","root", "admin");
 			if (connection != null) {
 				System.out.println("Se estableció la conexión :)");
