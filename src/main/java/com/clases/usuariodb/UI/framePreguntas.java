@@ -18,7 +18,7 @@ import javax.swing.JButton;
  *
  * @author magb
  */
-public class Preg extends javax.swing.JInternalFrame {
+public class framePreguntas extends javax.swing.JInternalFrame {
     List<Pregunta> lista = new ArrayList<>();
     private  List<JButton> botones;
     private int indice;
@@ -33,7 +33,7 @@ public class Preg extends javax.swing.JInternalFrame {
      * Creates new form Preg
      */
 
-    public Preg() {
+    public framePreguntas() {
  
               initComponents();
               botones = new ArrayList<>();

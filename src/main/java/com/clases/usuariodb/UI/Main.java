@@ -112,7 +112,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-         Preg uiusuario = new Preg();
+         framePreguntas uiusuario = new framePreguntas();
         dpContenedor.add(uiusuario);
         uiusuario.show();
     }//GEN-LAST:event_jMenuItem3ActionPerformed

@@ -9,8 +9,10 @@ import com.clases.usuariodb.modelos.Preferencia;
 import com.clases.usuariodb.DAO.PreferenciaDAO;
 import com.clases.usuariodb.DAO.UsuarioDAO;
 import com.clases.usuariodb.modelos.Usuario;
+import com.clases.usuariodb.reportes.ReportePDF;
 import java.awt.Frame;
 import java.awt.event.ItemEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -240,6 +242,9 @@ public class frameUsuario extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+              ReportePDF reporte = new ReportePDF();
+        reporte.crearPDF(new File("c://imgs//GeneratePDFFileIText.pdf"));
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
