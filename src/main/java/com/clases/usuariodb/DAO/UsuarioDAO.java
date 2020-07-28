@@ -13,10 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 public class UsuarioDAO extends Conexion {
 
-        public ArrayList<Usuario> listar() {
+    public ArrayList<Usuario> listar() {
         ArrayList<Usuario> usuarios = new ArrayList();
 
         try (Connection connection = connectToDB()) {
@@ -28,7 +27,9 @@ public class UsuarioDAO extends Conexion {
                 Usuario user = new Usuario(
                         Integer.valueOf(rs.getString("usuid")),
                         rs.getString("usunombre"),
-                        rs.getString("usuapellido")
+                        rs.getString("usuapellido"),
+                        rs.getString("nombreUsuario"),
+                        rs.getString("contrasena")
                 );
                 usuarios.add(user);
             }
@@ -38,6 +39,34 @@ public class UsuarioDAO extends Conexion {
         }
         return usuarios;
     }
+
+    public Usuario loginUsuario(String nombreUsuario, String contrasena) {
+
+        try (Connection connection = connectToDB()) {
+            String query = "SELECT * FROM usuario where nombreUsuario = ? and contrasena =?"; //sentencia
+            PreparedStatement ps;            
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, contrasena);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Usuario user = new Usuario(
+                        Integer.valueOf(rs.getString("usuid")),
+                        rs.getString("usunombre"),
+                        rs.getString("usuapellido"),
+                        rs.getString("nombreUsuario"),
+                        rs.getString("contrasena")
+                );
+                return user;
+            }
+        } catch (SQLException e) {
+            System.out.println("" + e.getMessage());
+            // TODO: handle exception
+        }
+        return null;
+    }
+
     //Guardar un nuevo usuario
     public void insertarUsuario(Usuario usuario) {
         try (Connection connection = connectToDB()) {
@@ -52,8 +81,8 @@ public class UsuarioDAO extends Conexion {
             e.printStackTrace();
         }
     }
-    
-               //Actualizar  un usuario
+
+    //Actualizar  un usuario
     public void actualizarUsuario(Usuario usuario) {
         try (Connection connection = connectToDB()) {
             PreparedStatement ps = null;
@@ -62,16 +91,17 @@ public class UsuarioDAO extends Conexion {
             ps = connection.prepareStatement(query);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
-            ps.setInt(3,  usuario.getId());
-          
+            ps.setInt(3, usuario.getId());
+
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("error:"+e.getMessage() );
+            System.out.println("error:" + e.getMessage());
             //estos errores guardar ennun archivo
         }
     }
-        //Eliminar  un usuario
+    //Eliminar  un usuario
+
     public void eliminarUsuario(int id) {
         try (Connection connection = connectToDB()) {
             PreparedStatement ps = null;
@@ -79,15 +109,11 @@ public class UsuarioDAO extends Conexion {
             String query = "delete from usuario where usuid =? ";///ojo con el where
             ps = connection.prepareStatement(query);
             ps.setInt(1, id);
- 
+
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
- 
-
-
 
 }

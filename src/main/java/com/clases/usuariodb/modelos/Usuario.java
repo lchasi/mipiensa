@@ -13,16 +13,23 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
+    private String nombreUsuario;
+    private String contrasena;
     //Constructores
-    public Usuario( String nombre, String apellido) {
-        
+
+    public Usuario(String nombre, String apellido, String nombreUsuario, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
     }
-    public Usuario(int id, String nombre, String apellido) {
+    
+    public Usuario(int id, String nombre, String apellido, String nombreUsuario, String contrasena) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
     }
 
     public int getId() {
@@ -48,5 +55,21 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
 }

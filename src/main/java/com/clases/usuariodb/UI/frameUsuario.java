@@ -44,6 +44,7 @@ public class frameUsuario extends javax.swing.JInternalFrame {
         initComponents();
         cargarDatosTabla();
         cargarPreferencias();
+        this.title=this.title+ "Usuario: "+Main.usuarioNombre;
     }
 
     private void cargarPreferencias() {
@@ -220,7 +221,7 @@ public class frameUsuario extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            Usuario user = new Usuario(txtNombre.getText(), txtApellido.getText());
+            Usuario user = new Usuario(txtNombre.getText(), txtApellido.getText(),"juan","123");
             UsuarioDAO insertar = new UsuarioDAO();
             insertar.insertarUsuario(user);//lista.add(user1)
         } catch (Exception ex) {

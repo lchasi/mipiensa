@@ -10,12 +10,18 @@ package com.clases.usuariodb.UI;
  * @author magb
  */
 public class Main extends javax.swing.JFrame {
+    public static int usuarioId;
+    public static String usuarioNombre;
 
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        //Iniciar ventana login
+        frameLogin login = new frameLogin();
+        dpContenedor.add(login);
+        login.show();
     }
 
     /**
